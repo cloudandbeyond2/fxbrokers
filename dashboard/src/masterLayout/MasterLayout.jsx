@@ -302,6 +302,17 @@ const MasterLayout = ({ children }) => {
                     View Brokers
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href='/best-brokers-management'
+                    className={
+                      pathname === "/content-management" ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    Add Best Broker Data
+                  </Link>
+                </li>
 
               </ul>
             </li>
@@ -372,6 +383,7 @@ const MasterLayout = ({ children }) => {
                     Add Broker Information
                   </Link>
                 </li>
+              
             
                 {/* <li>
                   <Link
