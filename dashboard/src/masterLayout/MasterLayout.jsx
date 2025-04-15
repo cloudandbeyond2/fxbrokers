@@ -413,10 +413,23 @@ const MasterLayout = ({ children }) => {
                     }
                   >
                     <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
-                    Add Content
+                    Add Review
                   </Link>
                 </li>
             
+
+
+                <li>
+                  <Link
+                    href='/Review-list'
+                    className={
+                      pathname === "/Review-list" ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    Review List
+                  </Link>
+                </li>
 
               </ul>
             </li>
