@@ -20,7 +20,7 @@ const RecentTransactionOne = () => {
             <table className='table bordered-table mb-0 xsm-table'>
               <thead>
                 <tr>
-                  <th scope='col'>Ast</th>
+                  {/* <th scope='col'>Ast</th> */}
                   <th scope='col'>Date &amp; Time</th>
                   <th scope='col'>Amount</th>
                   <th scope='col'>Address</th>
@@ -31,14 +31,14 @@ const RecentTransactionOne = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>
+                  {/* <td>
                     <div className='d-flex align-items-center gap-2'>
                       <span className='text-success-main bg-success-focus w-32-px h-32-px d-flex align-items-center justify-content-center rounded-circle text-xl'>
                         <Icon icon='tabler:arrow-up-right' className='icon' />
                       </span>
                       <span className='fw-medium'>Bitcoin</span>
                     </div>
-                  </td>
+                  </td> */}
                   <td>
                     <span className='text-primary-light d-block fw-medium'>
                       10:34 AM
@@ -63,14 +63,14 @@ const RecentTransactionOne = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                     <div className='d-flex align-items-center gap-2'>
                       <span className='text-danger-main bg-danger-focus w-32-px h-32-px d-flex align-items-center justify-content-center rounded-circle text-xl'>
                         <Icon icon='tabler:arrow-down-left' className='icon' />
                       </span>
                       <span className='fw-medium'>Bitcoin</span>
                     </div>
-                  </td>
+                  </td> */}
                   <td>
                     <span className='text-primary-light d-block fw-medium'>
                       10:34 AM
@@ -95,14 +95,14 @@ const RecentTransactionOne = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                     <div className='d-flex align-items-center gap-2'>
                       <span className='text-success-main bg-success-focus w-32-px h-32-px d-flex align-items-center justify-content-center rounded-circle text-xl'>
                         <Icon icon='tabler:arrow-up-right' className='icon' />
                       </span>
                       <span className='fw-medium'>Bitcoin</span>
                     </div>
-                  </td>
+                  </td> */}
                   <td>
                     <span className='text-primary-light d-block fw-medium'>
                       10:34 AM
@@ -127,14 +127,14 @@ const RecentTransactionOne = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                     <div className='d-flex align-items-center gap-2'>
                       <span className='text-danger-main bg-danger-focus w-32-px h-32-px d-flex align-items-center justify-content-center rounded-circle text-xl'>
                         <Icon icon='tabler:arrow-down-left' className='icon' />
                       </span>
                       <span className='fw-medium'>Bitcoin</span>
                     </div>
-                  </td>
+                  </td> */}
                   <td>
                     <span className='text-primary-light d-block fw-medium'>
                       10:34 AM
@@ -159,14 +159,14 @@ const RecentTransactionOne = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                     <div className='d-flex align-items-center gap-2'>
                       <span className='text-success-main bg-success-focus w-32-px h-32-px d-flex align-items-center justify-content-center rounded-circle text-xl'>
                         <Icon icon='tabler:arrow-up-right' className='icon' />
                       </span>
                       <span className='fw-medium'>Bitcoin</span>
                     </div>
-                  </td>
+                  </td> */}
                   <td>
                     <span className='text-primary-light d-block fw-medium'>
                       10:34 AM
