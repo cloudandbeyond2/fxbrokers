@@ -264,7 +264,7 @@ const MasterLayout = ({ children }) => {
           Dashboard
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link
           href='/clients'
           className={pathname === '/clients' ? 'active-page' : ''}
@@ -272,7 +272,7 @@ const MasterLayout = ({ children }) => {
           <Icon icon="tabler:users" className='menu-icon' />
           Clients
         </Link>
-      </li>
+      </li> */}
            
             <li className='dropdown'>
               <Link href='#'>
@@ -539,7 +539,40 @@ const MasterLayout = ({ children }) => {
 
               </ul>
             </li>
-
+            <li className='dropdown'>
+              <Link href='#'>
+              <Icon icon="mdi:shield" className="menu-icon" />
+ 
+ 
+                <span>Scam Broker Shield</span>
+              </Link>
+              <ul className='sidebar-submenu'>
+                <li>
+                  <Link
+                    href='/scambroker'
+                    className={
+                      pathname === "/scambroker" ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    Add Scamers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/viewscamers'
+                    className={
+                      pathname === "/viewscamers" ? "active-page" : ""
+                    }
+                  >
+                    <i className='ri-circle-fill circle-icon text-primary-600 w-auto' />{" "}
+                    View Scamers
+                  </Link>
+                </li>
+           
+ 
+              </ul>
+            </li>
             <li>
               <Link href='/deposit-request'>
               <Icon icon="mdi:wallet-outline" className="menu-icon" />
@@ -662,7 +695,7 @@ const MasterLayout = ({ children }) => {
             </li> */}
 
             {/* Crypto Currency Dropdown */}
-            <li className='dropdown'>
+            {/* <li className='dropdown'>
               <Link href='#'>
                 <i className='ri-robot-2-line mr-10' />
                 <span>Crypto Currency</span>
@@ -707,13 +740,13 @@ const MasterLayout = ({ children }) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
             
             {/* Invoice Dropdown */}
             <li className='dropdown'>
               <Link href='#'>
                 <Icon icon='hugeicons:invoice-03' className='menu-icon' />
-                <span>Invoice</span>
+                <span>Payments</span>
               </Link>
               <ul className='sidebar-submenu'>
                 <li>
