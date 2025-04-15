@@ -4,7 +4,7 @@ import useReactApexChart from "../../hook/useReactApexChart";
 const CoinAnalyticsTwo = () => {
   let { createChartFour } = useReactApexChart();
   return (
-    <div className='col-xxl-6'>
+    <div className='col-xxl-12'>
       <div className='card h-100 radius-8 border-0'>
         <div className='card-body p-24'>
           <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between mb-20'>

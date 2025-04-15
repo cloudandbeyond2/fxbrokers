@@ -25,7 +25,7 @@ const DashBoardLayerFour = () => {
               <CoinAnalyticsTwo />
 
               {/* MyOrdersOne */}
-              <MyOrdersOne />
+              {/* <MyOrdersOne /> */}
 
               {/* RecentTransactionOne */}
               <RecentTransactionOne />
@@ -37,7 +37,7 @@ const DashBoardLayerFour = () => {
           <div className='col-xxl-4'>
             <div className='row gy-4'>
               {/* MyCardsOne */}
-              <MyCardsOne />
+              {/* <MyCardsOne /> */}
 
               {/* TotalBalanceOne */}
               <TotalBalanceOne />
