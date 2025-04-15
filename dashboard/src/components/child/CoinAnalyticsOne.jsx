@@ -13,9 +13,9 @@ const CoinAnalyticsOne = () => {
       <div className='card h-100 radius-8 border-0'>
         <div className='card-body p-24'>
           <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between'>
-            <h6 className='mb-2 fw-bold text-lg'>Coin Analytics</h6>
+            <h6 className='mb-2 fw-bold text-lg'>Account Analytics</h6>
             <div className='d-flex flex-wrap align-items-center gap-4'>
-              <div className='form-check d-flex align-items-center'>
+              {/* <div className='form-check d-flex align-items-center'>
                 <input
                   className='form-check-input'
                   type='radio'
@@ -29,8 +29,9 @@ const CoinAnalyticsOne = () => {
                   {" "}
                   BTC
                 </label>
-              </div>
-              <div className='form-check d-flex align-items-center'>
+              </div> */}
+
+              {/* <div className='form-check d-flex align-items-center'>
                 <input
                   className='form-check-input'
                   type='radio'
@@ -44,8 +45,9 @@ const CoinAnalyticsOne = () => {
                   {" "}
                   ETH
                 </label>
-              </div>
-              <div className='form-check d-flex align-items-center'>
+              </div> */}
+
+              {/* <div className='form-check d-flex align-items-center'>
                 <input
                   className='form-check-input'
                   type='radio'
@@ -59,8 +61,9 @@ const CoinAnalyticsOne = () => {
                   {" "}
                   SOL
                 </label>
-              </div>
-              <div className='form-check d-flex align-items-center'>
+              </div> */}
+
+              {/* <div className='form-check d-flex align-items-center'>
                 <input
                   className='form-check-input'
                   type='radio'
@@ -74,7 +77,7 @@ const CoinAnalyticsOne = () => {
                   {" "}
                   LTE
                 </label>
-              </div>
+              </div> */}
             </div>
             <select
               className='form-select form-select-sm w-auto bg-base border text-secondary-light'
@@ -92,7 +95,7 @@ const CoinAnalyticsOne = () => {
           <div className='d-flex align-items-center gap-2 mt-12'>
             <h6 className='fw-semibold mb-0'>$25,000</h6>
             <p className='text-sm mb-0 d-flex align-items-center gap-1'>
-              Bitcoin (BTC)
+           
               <span className='bg-success-focus border border-success px-8 py-2 rounded-pill fw-semibold text-success-main text-sm d-inline-flex align-items-center gap-1'>
                 10%
                 <Icon icon='iconamoon:arrow-up-2-fill' className='icon' />
