@@ -1,4 +1,4 @@
-import AddBlogLayer from "@/components/AddBlogLayer";
+import Addreview from "@/components/Addreview";
 import Breadcrumb from "@/components/Breadcrumb";
 import MasterLayout from "@/masterLayout/MasterLayout";
 
@@ -17,7 +17,7 @@ const Page = () => {
         <Breadcrumb title='Blog Details' />
 
         {/* AddBlogLayer */}
-        <AddBlogLayer />
+        <Addreview />
       </MasterLayout>
     </>
   );
