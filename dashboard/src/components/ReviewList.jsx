@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Link from "next/link";
 
+
+
 const loadJQueryAndDataTables = async () => {
     const $ = (await import("jquery")).default;
     await import("datatables.net-dt/js/dataTables.dataTables.js");
@@ -39,9 +41,10 @@ const ReviewList = () => {
     return (
         <div className="card basic-data-table">
             <div className="card-header d-flex justify-content-between align-items-center">
-                <h5 className="card-title mb-0">Review List</h5>
-                <button className="btn btn-primary-600 radius-8">Add Review</button>
-            </div>
+  <h5 className="card-title mb-0">Review List</h5>
+  <Link href="/content-management" className="btn btn-primary-600 radius-8">Add Review</Link>
+
+</div>
 
             <div className="card-body">
                 <table
