@@ -71,7 +71,7 @@ const SignInLayer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/login', formData);
+      const res = await axios.post('http://localhost:5000/api/login', formData);
       const { username, email, role } = res.data.user;
 
       // ✅ Save user in Redux
