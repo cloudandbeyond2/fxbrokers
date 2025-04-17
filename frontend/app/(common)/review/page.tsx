@@ -20,7 +20,6 @@ const HomeTwo = () => {
       <Hero />
       <BrokerDetails />
       <RecentUserReview/>
-      <Footer />
     </>
   );
 };
