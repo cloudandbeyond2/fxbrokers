@@ -17,6 +17,7 @@ const HomeTwo = () => {
   return (
     <>
       <Header />
+      <Hero />
       <BrokerDetails />
       <RecentUserReview/>
       <Footer />
