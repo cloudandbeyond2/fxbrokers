@@ -424,6 +424,9 @@ const Header = () => {
                   </li>
                   <li onClick={() => setMobileMenu(false)}>
                     <Link href="/blog">Blog</Link>
+                  </li> 
+                  <li onClick={() => setMobileMenu(false)}>
+                    <Link href="/review">Reviews</Link>
                   </li>
                   <li onClick={() => setMobileMenu(false)}>
                     <Link href="/blog/top-10-brokers-for-beginner-investors-in-2024">Blog Details</Link>
