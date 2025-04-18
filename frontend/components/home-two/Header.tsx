@@ -73,7 +73,8 @@ const Header = () => {
       <div className="header-container">
         <div className="d-flex gap-2 gap-lg-3 gap-xxxl-4 justify-content-between">
           <Link href="/" className="d-flex align-items-center">
-            <Image src={logo} alt="site logo" />
+            
+            <Image src={logo} alt="site logo" style={{ width: '117px', height: '51px' }} />
           </Link>
           <OutsideClickHandler onOutsideClick={() => setMegaMenu(false)}>
             <div className="brokers-dropdown">
@@ -196,7 +197,7 @@ const Header = () => {
           <div className="br-right-white pe-sm-3">
             <ul className={`menu ${mobileMenu ? "active" : ""}`}>
               <Link href="/" className="d-flex mb-4 d-xl-none px-2 pt-2">
-                <Image src={logo} alt="site logo" />
+              <Image src={logo} alt="site logo" style={{ width: '117px', height: '51px' }} />
               </Link>
               <button onClick={() => setMobileMenu(false)} className="close-btn bg-transparent border-0 position-absolute">
                 <i className="ph ph-x"></i>

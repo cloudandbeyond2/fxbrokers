@@ -60,8 +60,7 @@ const Header = () => {
       <div className="header-container">
         <div className="d-flex gap-2 gap-lg-3 gap-xxxl-4 justify-content-between">
           <Link href="/" className="d-flex align-items-center">
-            <Image src={logo} alt="site logo" />
-          </Link>
+          <Image src={logo} alt="site logo" style={{ width: '117px', height: '51px' }} />          </Link>
           <OutsideClickHandler onOutsideClick={() => setMegaMenu(false)}>
             <div className="brokers-dropdown">
               <div className="d-flex gap-2 align-items-center brokers-dropdown-btn" onClick={() => setMegaMenu(!megaMenu)}>

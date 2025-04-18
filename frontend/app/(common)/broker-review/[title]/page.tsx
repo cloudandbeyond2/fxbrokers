@@ -15,6 +15,8 @@ import Chart from "@/components/broker-review/Chart";
 import { brokers } from "@/components/home-two/HighestRatedBroker";
 import { Metadata } from "next";
 import Link from "next/link";
+import BestBrokerTwo from "../../best-brokers-two/page";
+import BrokerReviewTop from "@/app/broker-review-top/page";
 export const formatString = (str: string) => {
   return str.split(" ").join("-").toLowerCase();
 };
@@ -33,6 +35,10 @@ const BrokerReview = ({ params }: { params: { title: string } }) => {
   return (
     <main>
       <Hero title={broker.title} />
+
+      
+      <BestBrokerTwo />  {/* Add this line */}
+      <BrokerReviewTop />
 
       {/* review */}
       <section className="broker-reviews overflow-visible">

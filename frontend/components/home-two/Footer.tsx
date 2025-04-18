@@ -9,8 +9,8 @@ const Footer = () => {
         <div className="row g-3 pb-120">
           <div className="col-md-6 col-lg-4 d-flex align-items-center">
             <Link href="/" className="d-inline-flex">
-              <Image src={Logo} alt="" />
-            </Link>
+            <Image src={Logo} alt="" style={{ width: '164px', height: '79px' }} />
+                        </Link>
           </div>
           <div className="col-md-6 col-lg-4 d-flex align-items-center">
             <h4 className="text-white fw-semibold text-center">Get in Touch with Support Team</h4>

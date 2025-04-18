@@ -2,207 +2,459 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import heroEl from "@/public/images/hero-el.png";
-import user1 from "@/public/images/user/user-1.png";
-import user2 from "@/public/images/user/user-2.png";
-import breadCrumbImg from "@/public/images/breadcrumb-img.png";
 import OutsideClickHandler from "react-outside-click-handler";
-import { brokers } from "@/components/home-two/HighestRatedBroker";
 import Link from "next/link";
-import { formatString } from "../broker-review/[title]/page";
+
+interface Broker {
+  image: string;
+  rating: number;
+  title: string;
+  aosDelay: number;
+  popularity: string;
+  availableInIndia: boolean;
+  updated: string;
+}
+
+const brokers: Broker[] = [
+  {
+    title: "IC Markets",
+    image: "/images/investment/investment-1.png",
+    rating: 4.8,
+    aosDelay: 100,
+    popularity: "Very High",
+    availableInIndia: true,
+    updated: "May 2024"
+  },
+  {
+    title: "Pepperstone",
+    image: "/images/investment/investment-2.png",
+    rating: 4.7,
+    aosDelay: 200,
+    popularity: "High",
+    availableInIndia: true,
+    updated: "April 2024"
+  },
+  {
+    title: "XM Broker",
+    image: "/images/investment/investment-3.png",
+    rating: 4.5,
+    aosDelay: 300,
+    popularity: "High",
+    availableInIndia: false,
+    updated: "March 2024"
+  },
+  {
+    title: "FP Markets",
+    image: "/images/investment/investment-4.png",
+    rating: 4.6,
+    aosDelay: 400,
+    popularity: "Medium",
+    availableInIndia: true,
+    updated: "April 2024"
+  },
+];
 
 const BestBrokerTwo = () => {
   const [openedPopover, setOpenedPopover] = useState<null | number>(null);
+  const [selectedBroker1, setSelectedBroker1] = useState<string>('');
+  const [selectedBroker2, setSelectedBroker2] = useState<string>('');
+  const [comparison, setComparison] = useState<Broker[]>([]);
+
+  const handleFilterChange1 = (brokerName: string) => {
+    setSelectedBroker1(brokerName);
+    if (brokerName && selectedBroker2) {
+      const broker1 = brokers.find(broker => broker.title === brokerName);
+      const broker2 = brokers.find(broker => broker.title === selectedBroker2);
+      if (broker1 && broker2) {
+        setComparison([broker1, broker2]);
+      }
+    }
+  };
+
+  const handleFilterChange2 = (brokerName: string) => {
+    setSelectedBroker2(brokerName);
+    if (brokerName && selectedBroker1) {
+      const broker1 = brokers.find(broker => broker.title === selectedBroker1);
+      const broker2 = brokers.find(broker => broker.title === brokerName);
+      if (broker1 && broker2) {
+        setComparison([broker1, broker2]);
+      }
+    }
+  };
+
   return (
     <main>
-      {/* <!-- hero  --> */}
+      {/* Hero Section */}
       <section className="hero-breadcrumb-two overflow-visible">
         <Image className="hero-el one" src={heroEl} alt="" />
         <Image className="hero-el two" src={heroEl} alt="" />
         <Image className="hero-el three" src={heroEl} alt="" />
         <div className="container">
           <div className="row gy-4">
-            <div className="col-lg-7">
-              <div className="mb-60">
-                <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb text-white">
-                    <li className="breadcrumb-item">
-                      <a href="#" className="l-text">
-                        Home
-                      </a>
-                    </li>
-                    <li className="breadcrumb-item l-text">Best Brokers</li>
-                    <li className="breadcrumb-item active l-text" aria-current="page">
-                      Style 02
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-              <h2 className="display-4 mb-40 fw-semibold text-white">Best brokers for beginners</h2>
-              <div className="d-flex align-items-sm-center flex-column flex-sm-row  gap-3 flex-wrap">
-                <div className="position-relative">
-                  <div onClick={() => setOpenedPopover((p) => (p == 1 ? null : 1))} className="d-flex align-items-center gap-4" role="button">
-                    <Image src={user1} width="56" height="56" className="rounded-circle" alt="" />
-                    <div>
-                      <p className="text-white m-text mb-1">Written by</p>
-                      <h5 className="text-white fw-semibold d-flex align-items-center gap-1">
-                        <span className="text-white">Adam Nasli </span> <i className="ph ph-caret-down"></i>
-                      </h5>
-                    </div>
-                  </div>
-                  <OutsideClickHandler onOutsideClick={() => setOpenedPopover(null)}>
-                    {openedPopover === 1 && (
-                      <div className="p-4 rounded-4 shadow-lg bg-white position-absolute top-100 custom-popover">
-                        <div className="d-flex gap-4 align-items-center mb-4">
-                          <Image src={user1} alt="" />
-                          <div>
-                            <p className="m-text mb-2">Written By</p>
-                            <h3 className="fw-semibold mb-3">Adam Nasli, CFA</h3>
-                            <p>Forex • Derivatives • Market Analysis</p>
-                          </div>
-                        </div>
-                        <p className="m-text mb-4">
-                          During my professional career, I have traded many currency pairs on behalf of mutual funds, both as a speculative investment and as a hedging tool; racking up trades worth billions of dollars. I combine that experience with my active role in testing forex broker platforms
-                          to steer users to the best brokers for their needs.
-                        </p>
-                        <p>
-                          Learn more about{" "}
-                          <a href="#" className="text-primary">
-                            Our Methodology
-                          </a>
-                        </p>
-                      </div>
-                    )}
-                  </OutsideClickHandler>
-                </div>
-                <div className="vr d-none d-sm-block opacity-25 bg-white"></div>
-
-                <div className="position-relative">
-                  <div onClick={() => setOpenedPopover((p) => (p == 2 ? null : 2))} data-bs-trigger="hover focus" role="button" className="d-flex align-items-center gap-4">
-                    <Image src={user2} width="56" height="56" className="rounded-circle" alt="" />
-                    <div>
-                      <p className="m-text text-white mb-1">Fact Checked by</p>
-                      <h5 className="fw-semibold d-flex text-white align-items-center gap-1">
-                        <span className="text-white">Edith Balazs </span> <i className="ph ph-caret-down"></i>
-                      </h5>
-                    </div>
-                  </div>
-                  <OutsideClickHandler onOutsideClick={() => setOpenedPopover(null)}>
-                    {openedPopover === 2 && (
-                      <div className="p-4 rounded-4 shadow-lg bg-white custom-popover position-absolute top-100">
-                        <div className="d-flex gap-4 align-items-center mb-4">
-                          <Image src={user2} alt="" />
-                          <div>
-                            <p className="m-text mb-2">Fact Checked By</p>
-                            <h3 className="fw-semibold mb-3">Edith Balazis, CFA</h3>
-                            <p>Forex • Derivatives • Market Analysis</p>
-                          </div>
-                        </div>
-                        <p className="m-text mb-4">
-                          During my professional career, I have traded many currency pairs on behalf of mutual funds, both as a speculative investment and as a hedging tool; racking up trades worth billions of dollars. I combine that experience with my active role in testing forex broker platforms
-                          to steer users to the best brokers for their needs.
-                        </p>
-                        <p>
-                          Learn more about{" "}
-                          <a href="#" className="text-primary">
-                            Our Methodology
-                          </a>
-                        </p>
-                      </div>
-                    )}
-                  </OutsideClickHandler>
-                </div>
-                <div className="vr d-none d-sm-block opacity-25 bg-white"></div>
-                <div className="position-relative">
-                  <div onClick={() => setOpenedPopover((p) => (p == 3 ? null : 3))} className="d-flex align-items-center gap-4" role="button">
-                    <div className="text-white">
-                      <p className="m-text mb-1 text-white">Updated</p>
-                      <h5 className="fw-semibold text-white d-flex align-items-center gap-1">
-                        <span className="text-white">2w ago </span> <i className="ph ph-caret-down"></i>
-                      </h5>
-                    </div>
-                  </div>
-                  <OutsideClickHandler onOutsideClick={() => setOpenedPopover(null)}>
-                    {openedPopover === 3 && (
-                      <div className="p-4 rounded-4 shadow-lg right-0 bg-white position-absolute top-100 custom-popover third">
-                        <h4 className="fw-semibold mb-4">Always up to date</h4>
-                        <p className="m-text bb-n40">Our experts continuously verify broker data to provide the most up-to-date information.</p>
-                        <p>
-                          Last updated on <span className="fw-medium">May 13, 2024</span>
-                        </p>
-                      </div>
-                    )}
-                  </OutsideClickHandler>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-5 col-xl-3 offset-xl-2">
-              <Image src={breadCrumbImg} alt="" />
-            </div>
+            {/* Hero content here */}
           </div>
         </div>
       </section>
 
-      {/* <!-- best brokers --> */}
+      {/* Best Brokers Comparison Section */}
       <section className="best-broker-two pt-120 pb-120">
         <div className="container">
-          <div className="d-flex flex-wrap gap-3 justify-content-between align-items-center mb-40">
-            <p className="m-text text-n500">Showing 1-8 of 100 results</p>
-            <div className="d-flex gap-2 align-items-center">
-              <span>Sort By:</span>
-              <select name="sortby" id="sortby" className="select">
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-              </select>
+          {/* Comparison Selectors */}
+          <div className="comparison-selectors">
+            <div className="selector-group">
+              <label className="selector-label">Select first broker:</label>
+              <div className="custom-select">
+                <select 
+                  onChange={(e) => handleFilterChange1(e.target.value)} 
+                  value={selectedBroker1}
+                >
+                  <option value="">Select a broker</option>
+                  {brokers.map(broker => (
+                    <option key={broker.title} value={broker.title}>{broker.title}</option>
+                  ))}
+                </select>
+                <div className="select-arrow">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div className="vs-badge">VS</div>
+            
+            <div className="selector-group">
+              <label className="selector-label">Select second broker:</label>
+              <div className="custom-select">
+                <select 
+                  onChange={(e) => handleFilterChange2(e.target.value)} 
+                  value={selectedBroker2}
+                >
+                  <option value="">Select a broker</option>
+                  {brokers.map(broker => (
+                    <option key={broker.title} value={broker.title}>{broker.title}</option>
+                  ))}
+                </select>
+                <div className="select-arrow">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="row g-4 mb-40">
-            {brokers.map(({ image, rating, title, aosDelay }, index) => (
-              <div key={title} data-aos="fade-in" data-aos-delay={aosDelay} className="col-lg-6">
-                <Link href={`/broker-review/${formatString(title)}`} className="broker-card style-two d-flex justify-content-between align-items-center">
-                  <div className="d-flex gap-2 gap-sm-3 align-items-center">
-                    <div className="bg-success text-white h-100 px-1 d-none d-sm-block rounded-5 fw-semibold py-3">{index + 1}</div>
-                    <div className="img f-center rounded-circle">
-                      <Image className="img-fluid rounded-circle" src={image} alt="" />
+          {/* Comparison Results */}
+          {comparison.length > 0 && (
+            <div className="comparison-results">
+              <div className="broker-card">
+                <div className="broker-rank">1</div>
+                <div className="broker-image">
+                  <Image 
+                    src={comparison[0].image} 
+                    alt={comparison[0].title}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <div className="broker-details">
+                  <h3>{comparison[0].title}</h3>
+                  <div className="broker-stats">
+                    <div className="stat-item">
+                      <span className="stat-label">Score:</span>
+                      <span className="stat-value">{comparison[0].rating}/5</span>
                     </div>
-                    <div>
-                      <h4 className="fw-semibold mb-2">{title}</h4>
-                      <p className="text-n500 m-text d-flex align-items-center gap-4">
-                        Beginner score:
-                        <span className="d-flex align-items-center gap-2">
-                          <span className="f-center fs-5 text-secondary">
-                            <i className="ph ph-star-fill"></i>
-                          </span>{" "}
-                          <span className="fw-medium">{rating}</span>/5
-                        </span>
-                      </p>
+                    <div className="stat-item">
+                      <span className="stat-label">Popularity:</span>
+                      <span className="stat-value">{comparison[0].popularity}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">India:</span>
+                      <span className="stat-value">
+                        {comparison[0].availableInIndia ? "Available" : "Not available"}
+                      </span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Updated:</span>
+                      <span className="stat-value">{comparison[0].updated}</span>
                     </div>
                   </div>
-                  <button className="arrow-btn text-secondary d-none d-sm-flex fs-4 f-center rounded-circle border border-secondary">
-                    <i className="ph ph-arrow-up-right"></i>
-                  </button>
+                </div>
+                <Link 
+                  // href={`/broker-review/${comparison[0].title.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`#`}
+                  className="broker-button"
+                >
+                  <span>View Details</span>
+                  {/* <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg> */}
                 </Link>
               </div>
-            ))}
-          </div>
 
-          {/* <!-- pagination --> */}
-          <div className="d-flex justify-content-center pagination-list">
-            <button>
-              <i className="ph ph-caret-left-bold"></i>
-            </button>
-            <a href="#">1</a>
-            <a href="#" className="active">
-              2
-            </a>
-            <a href="#">3</a>
-            <a href="#">
-              <i className="ph ph-dots-three-bold"></i>
-            </a>
-            <button>
-              <i className="ph ph-caret-right-bold"></i>
-            </button>
-          </div>
+              <div className="broker-card">
+                <div className="broker-rank">2</div>
+                <div className="broker-image">
+                  <Image 
+                    src={comparison[1].image} 
+                    alt={comparison[1].title}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <div className="broker-details">
+                  <h3>{comparison[1].title}</h3>
+                  <div className="broker-stats">
+                    <div className="stat-item">
+                      <span className="stat-label">Score:</span>
+                      <span className="stat-value">{comparison[1].rating}/5</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Popularity:</span>
+                      <span className="stat-value">{comparison[1].popularity}</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">India:</span>
+                      <span className="stat-value">
+                        {comparison[1].availableInIndia ? "Available" : "Not available"}
+                      </span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-label">Updated:</span>
+                      <span className="stat-value">{comparison[1].updated}</span>
+                    </div>
+                  </div>
+                </div>
+                <Link 
+                  // href={`/broker-review/${comparison[1].title.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`#`}
+                  className="broker-button"
+                >
+                  <span>View Details</span>
+                  {/* <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg> */}
+                </Link>
+              </div>
+            </div>
+          )}
+
+          <style jsx>{`
+            /* Base Styles */
+            .container {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 0 20px;
+            }
+            
+            /* Comparison Selectors */
+            .comparison-selectors {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              margin-bottom: 40px;
+            }
+            
+            @media (min-width: 768px) {
+              .comparison-selectors {
+                flex-direction: row;
+                align-items: flex-end;
+                gap: 30px;
+              }
+            }
+            
+            .selector-group {
+              flex: 1;
+            }
+            
+            .selector-label {
+              display: block;
+              margin-bottom: 8px;
+              font-weight: 500;
+              color: #333;
+              font-size: 14px;
+            }
+            
+            .custom-select {
+              position: relative;
+            }
+            
+            .custom-select select {
+              width: 100%;
+              padding: 12px 16px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              background-color: white;
+              font-size: 16px;
+              appearance: none;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            
+            .custom-select select:focus {
+              outline: none;
+              border-color: #4a90e2;
+              box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            }
+            
+            .select-arrow {
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translateY(-50%);
+              pointer-events: none;
+            }
+            
+            .select-arrow svg {
+              width: 16px;
+              height: 16px;
+              fill: #666;
+            }
+            
+            .vs-badge {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 0 10px;
+              font-weight: bold;
+              color: #666;
+            }
+            
+            @media (min-width: 768px) {
+              .vs-badge {
+                padding-bottom: 12px;
+              }
+            }
+            
+            /* Comparison Results */
+            .comparison-results {
+              display: grid;
+              gap: 20px;
+            }
+            
+            @media (min-width: 768px) {
+              .comparison-results {
+                grid-template-columns: 1fr 1fr;
+              }
+            }
+            
+            .broker-card {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              background: white;
+              border-radius: 12px;
+              padding: 20px;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              border: 1px solid #eee;
+            }
+            
+            .broker-card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            }
+            
+            .broker-rank {
+              position: absolute;
+              top: 20px;
+              left: 20px;
+              background: #4CAF50;
+              color: white;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: bold;
+              font-size: 14px;
+            }
+            
+            .broker-image {
+              align-self: center;
+              margin-bottom: 20px;
+            }
+            
+            .broker-image img {
+              border-radius: 50%;
+              object-fit: cover;
+              border: 3px solid #f0f0f0;
+            }
+            
+            .broker-details {
+              margin-bottom: 20px;
+            }
+            
+            .broker-details h3 {
+              margin: 0 0 15px 0;
+              font-size: 20px;
+              color: #222;
+              text-align: center;
+            }
+            
+            .broker-stats {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 12px;
+            }
+            
+            @media (min-width: 480px) {
+              .broker-stats {
+                grid-template-columns: 1fr 1fr;
+              }
+            }
+            
+            .stat-item {
+              display: flex;
+              justify-content: space-between;
+              padding: 8px 0;
+              border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .stat-label {
+              color: #666;
+              font-size: 14px;
+            }
+            
+            .stat-value {
+              font-weight: 500;
+              color: #333;
+            }
+            
+            /* Broker Button */
+            .broker-button {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              padding: 12px 20px;
+              background: linear-gradient(135deg, #4a90e2, #3a7bd5);
+              color: white;
+              border: none;
+              border-radius: 8px;
+              font-weight: 500;
+              text-decoration: none;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              margin-top: auto;
+              align-self: center;
+              width: 100%;
+              max-width: 200px;
+            }
+            
+            .broker-button:hover {
+              background: linear-gradient(135deg, #3a7bd5, #2a6bc7);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            .broker-button svg {
+              width: 16px;
+              height: 16px;
+              fill: white;
+            }
+          `}</style>
         </div>
       </section>
     </main>
