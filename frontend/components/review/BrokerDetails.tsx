@@ -1,57 +1,178 @@
-import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import { brokers } from "../home-two/HighestRatedBroker";
-import { formatString } from "@/app/(common)/broker-review/[title]/page";
 
 const BrokerDetails = () => {
   return (
-    <section className="best-broker overflow-x-hidden">
-      <div className="container">
-        <div className="row gy-5 align-items-center">
-          <div data-aos="fade-in" className="col-lg-6">
-            <div className="box-lg">
-              <h4 className="fw-semibold bb-dashed">Top Broker list</h4>
-              <div className="investment-list overflow-x-auto">
-                <table className="w-100 whitespace-nowrap">
+    <section className="container my-5 d-flex justify-content-center">
+      <div className="card shadow w-100" style={{ maxWidth: "1000px" }}>
+        <div
+          className="card-body text-muted"
+          style={{ maxWidth: "900px", margin: "0 auto", fontSize: "0.95rem" }}
+        >
+          <h2 className="card-title mb-4 text-center" id="broker-details">
+            Broker Details
+          </h2>
+
+          {/* First row of mini tables */}
+          <div className="row row-cols-1 row-cols-md-3 mb-4">
+            {[
+              ["Minimum Trade Size:", "0.01"],
+              ["Maximum Leverage:", "200:1"],
+              ["Minimum to Open Live:", "$250"],
+            ].map(([label, value], i) => (
+              <div className="col mb-3" key={i}>
+                <table className="table table-bordered small mb-0">
                   <tbody>
-                    {brokers.slice(0, 5).map(({ image, rating, title }) => (
-                      <tr key={title}>
-                        <td>
-                          <div className="px-2">01</div>
-                        </td>
-                        <td>
-                          <div className="d-flex align-items-center gap-3 px-3 px-lg-4 py-2 py-lg-3">
-                            <Image src={image} className="img-fluid" alt="" />
-                            <p className="m-text fw-medium">{title}</p>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="f-center gap-2 px-4">
-                            <span className="text-secondary fs-4 f-center">
-                              <i className="ph ph-star-fill"></i>
-                            </span>
-                            <p className="m-text fw-medium">{rating}</p>
-                          </div>
-                        </td>
-                        <td>
-                          <Link href={`/broker-review/${formatString(title)}`} className="btn-sm btn btn-outline-secondary rounded-5 py-2 px-4">
-                            View Link
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
+                    <tr>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
+            ))}
+          </div>
+
+          {/* Second row of complex tables */}
+          <div className="row row-cols-1 row-cols-md-3 mb-4">
+            {/* Column 1 */}
+            <div className="col mb-3">
+              <table className="table table-bordered small">
+                <tbody>
+                  {[
+                    ["Established:", "1974"],
+                    [
+                      "Address:",
+                      "Cannon Bridge House, 25 Dowgate Hill, London, EC4R 2YA, United Kingdom",
+                    ],
+                    ["Contact:", "helpdesk@ig.com, (44) 207 896 0079"],
+                    [
+                      "Regional Offices:",
+                      "Australia, South Africa, UAE, United States",
+                    ],
+                    ["Regulators:", "ASIC, FSCA, DFSA, FCA, NFA"],
+                    [
+                      "Prohibited Countries:",
+                      "Afghanistan, Cuba, Iran, Iraq, North Korea, Sudan, Syria, etc.",
+                    ],
+                  ].map(([label, value], i) => (
+                    <tr key={i}>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Column 2 */}
+            <div className="col mb-3">
+              <table className="table table-bordered small mb-3">
+                <tbody>
+                  <tr>
+                    <th style={{ color: "#2f3e46" }}>Trading platforms:</th>
+                    <td>MT4, WebTrader, MobileTrader (MobileApp), ProRealTime</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className="table table-bordered small mb-3">
+                <tbody>
+                  {[
+                    ["Web Trading:", "✅ Yes"],
+                    ["Mobile Trading:", "✅ Yes"],
+                    ["ECN:", "✅ Yes"],
+                  ].map(([label, value], i) => (
+                    <tr key={i}>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <h6 className="mb-3" style={{ color: "#2f3e46" }}>
+                Trading Instruments
+              </h6>
+              <table className="table table-bordered small">
+                <tbody>
+                  {[
+                    ["Currencies:", "(105+)"],
+                    ["Cryptocurrencies:", "(10+) Bitcoin, Litecoin, Ethereum"],
+                    [
+                      "CFD:",
+                      "(16000+) Gold, Silver, Stocks, Stock Indexes, Bonds, Bond Indexes, Oil, Other Commodities",
+                    ],
+                  ].map(([label, value], i) => (
+                    <tr key={i}>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Column 3 */}
+            <div className="col mb-3">
+              <h6 className="mb-3" style={{ color: "#2f3e46" }}>
+                Trading Conditions
+              </h6>
+              <table className="table table-bordered small mb-3">
+                <tbody>
+                  {[
+                    ["EAs/Robots:", "✅ Yes"],
+                    ["News Trading:", "✅ Yes"],
+                    ["Scalping:", "✅ Yes"],
+                  ].map(([label, value], i) => (
+                    <tr key={i}>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <h6 className="mb-3" style={{ color: "#2f3e46" }}>
+                Managed Accounts & Social Trading
+              </h6>
+              <table className="table table-bordered small">
+                <tbody>
+                  {[
+                    ["MAM:", "✅ Yes"],
+                    ["PAMM:", "✅ Yes"],
+                  ].map(([label, value], i) => (
+                    <tr key={i}>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-          <div data-aos="fade-left" className="col-lg-6 col-xl-5 offset-xl-1">
-            <h2 className="display-4 mb-3 mb-xl-4 fw-bold">Check Out The Best Brokers in Worlds</h2>
-            <p className="mb-4 mb-xl-5">Trust is the cornerstone of our platform. Count on us to be your reliable companion on your financial journey.</p>
-            <Link href="/best-brokers-one" className="btn btn-secondary fw-semibold d-inline-flex align-items-center gap-2">
-              See All Brokers <i className="ph ph-arrow-right"></i>
-            </Link>
+
+          {/* Third row - Deposit & Withdrawal */}
+          <div className="row row-cols-1 row-cols-md-2 mb-4">
+            {[
+              [
+                "Deposit Methods:",
+                "Bank Wire (BankTransfer/SWIFT), VISA, MasterCard, PayPal",
+              ],
+              [
+                "Withdrawal Methods:",
+                "Bank Wire (BankTransfer/SWIFT), VISA, MasterCard, PayPal",
+              ],
+            ].map(([label, value], i) => (
+              <div className="col mb-3" key={i}>
+                <table className="table table-bordered small mb-0">
+                  <tbody>
+                    <tr>
+                      <th style={{ color: "#2f3e46" }}>{label}</th>
+                      <td>{value}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))}
           </div>
         </div>
       </div>

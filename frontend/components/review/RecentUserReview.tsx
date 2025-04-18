@@ -1,57 +1,159 @@
+'use client';
+import React, { useState } from "react";
 import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import { brokers } from "../home-two/HighestRatedBroker";
-import { formatString } from "@/app/(common)/broker-review/[title]/page";
+
+const userReviews = [
+  {
+    name: "Or Benezra",
+    location: "Tel Aviv, Israel",
+    date: "Apr 26, 2022",
+    stars: 5,
+    title: "Great App",
+    usage: "Other",
+    duration: "0-3 Months",
+    review:
+      "Love the app, It helped me invest my money and I am super pleased with the feel and functionality",
+    helpful: 1,
+    avatar:
+      "https://ui-avatars.com/api/?name=Or+Benezra&background=0D8ABC&color=fff",
+    reply: "Thank you for the kind feedback! We're glad you're enjoying the platform.",
+  },
+  {
+    name: "Josephmcconico",
+    location: "Chicago, USA",
+    date: "Apr 14, 2022",
+    stars: 1,
+    title: "30+ Pip Spreads",
+    usage: "Live",
+    duration: "0-3 Months",
+    review:
+      "Sure they offered a free $250, but then on my second day of trading I see a great trade, and I am a scalper btw. I'm about to place my trade and I see the spread is at $30. So I have to make 30 pips up before I am even profitable. Worst experience ever.\n\nIf you have any sense, please do not use this broker, waste of money and time.",
+    helpful: 2,
+    avatar:
+      "https://ui-avatars.com/api/?name=Josephmcconico&background=FF5733&color=fff",
+    reply: "", // No reply yet
+  },
+];
 
 const RecentUserReview = () => {
+  const [visibleReplies, setVisibleReplies] = useState({});
+
+  const toggleReply = (index) => {
+    setVisibleReplies((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
-    <section className="best-broker overflow-x-hidden">
+    <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="container">
-        <div className="row gy-5 align-items-center">
-          <div data-aos="fade-in" className="col-lg-6">
-            <div className="box-lg">
-              <h4 className="fw-semibold bb-dashed">Top Broker list</h4>
-              <div className="investment-list overflow-x-auto">
-                <table className="w-100 whitespace-nowrap">
-                  <tbody>
-                    {brokers.slice(0, 5).map(({ image, rating, title }) => (
-                      <tr key={title}>
-                        <td>
-                          <div className="px-2">01</div>
-                        </td>
-                        <td>
-                          <div className="d-flex align-items-center gap-3 px-3 px-lg-4 py-2 py-lg-3">
-                            <Image src={image} className="img-fluid" alt="" />
-                            <p className="m-text fw-medium">{title}</p>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="f-center gap-2 px-4">
-                            <span className="text-secondary fs-4 f-center">
-                              <i className="ph ph-star-fill"></i>
-                            </span>
-                            <p className="m-text fw-medium">{rating}</p>
-                          </div>
-                        </td>
-                        <td>
-                          <Link href={`/broker-review/${formatString(title)}`} className="btn-sm btn btn-outline-secondary rounded-5 py-2 px-4">
-                            View Link
-                          </Link>
-                        </td>
-                      </tr>
+        <div className="row g-4">
+          <div className="col-12">
+            {userReviews.map((review, index) => (
+              <div
+                key={index}
+                className="bg-white p-0 rounded-4 shadow-sm mb-4 d-flex flex-lg-row flex-column"
+              >
+                {/* Left Column */}
+                <div
+                  className="d-flex flex-column text-center text-lg-start p-3"
+                  style={{
+                    minWidth: 200,
+                    backgroundColor: "#f1f1f1",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                  }}
+                >
+                  <Image
+                    src={review.avatar}
+                    alt={review.name}
+                    width={80}
+                    height={80}
+                    className="rounded-circle mb-3"
+                  />
+                  <div>
+                    <p className="fw-semibold mb-1">{review.name}</p>
+                    <small className="text-muted">{review.location}</small>
+                    <br />
+                    <small className="text-muted">{review.date}</small>
+                    <br />
+                    <small className="text-muted">Registered user</small>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="flex-grow-1 p-4">
+                  <h5 className="fw-bold mb-2">{review.title}</h5>
+                  <div className="d-flex flex-wrap gap-2 mb-2">
+                    <span className="badge bg-light text-dark">
+                      Service use: {review.usage}
+                    </span>
+                    <span className="badge bg-light text-dark">
+                      Length of use: {review.duration}
+                    </span>
+                  </div>
+
+                  <div className="mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <i
+                        key={i}
+                        className={`ph ${
+                          i < review.stars
+                            ? "ph-star-fill text-warning"
+                            : "ph-star text-secondary"
+                        }`}
+                      ></i>
                     ))}
-                  </tbody>
-                </table>
+                  </div>
+
+                  <p className="text-muted" style={{ whiteSpace: "pre-line" }}>
+                    {review.review}
+                  </p>
+
+                  <div className="d-flex align-items-center gap-2 text-success mb-3">
+                    <i className="ph ph-thumbs-up"></i>
+                    <small>
+                      {review.helpful} trader
+                      {review.helpful > 1 ? "s have" : " has"} found this review
+                      helpful
+                    </small>
+                  </div>
+
+                  {/* Toggle Button */}
+                  <button
+                    className="btn btn-outline-success rounded-3 px-3 py-1 mb-3"
+                    onClick={() => toggleReply(index)}
+                  >
+                    {visibleReplies[index]
+                      ? "Hide IG Representative Answer"
+                      : "Show IG Representative Answer"}
+                  </button>
+
+                  {/* Conditionally Render Reply */}
+                  {visibleReplies[index] && (
+                    <>
+                      {review.reply ? (
+                        <div className="card border-success">
+                          <div className="card-header bg-success text-white">
+                            IG Representative Response
+                          </div>
+                          <div className="card-body">
+                            <p className="card-text text-muted mb-0">
+                              {review.reply}
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="alert alert-warning mb-0">
+                          IG has not responded to this review yet.
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          </div>
-          <div data-aos="fade-left" className="col-lg-6 col-xl-5 offset-xl-1">
-            <h2 className="display-4 mb-3 mb-xl-4 fw-bold">Check Out The Best Brokers in Worlds</h2>
-            <p className="mb-4 mb-xl-5">Trust is the cornerstone of our platform. Count on us to be your reliable companion on your financial journey.</p>
-            <Link href="/best-brokers-one" className="btn btn-secondary fw-semibold d-inline-flex align-items-center gap-2">
-              See All Brokers <i className="ph ph-arrow-right"></i>
-            </Link>
+            ))}
           </div>
         </div>
       </div>
