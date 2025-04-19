@@ -38,12 +38,13 @@ const userReviews = [
 const RecentUserReview = () => {
   const [visibleReplies, setVisibleReplies] = useState<Record<number, boolean>>({});
 
-  const toggleReply = (index) => {
+  const toggleReply = (index: number) => {
     setVisibleReplies((prev) => ({
       ...prev,
       [index]: !prev[index],
     }));
   };
+  
 
   return (
     <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
