@@ -98,13 +98,26 @@ const Clients = () => {
 
 const HomeTwo = () => {
   return (
-    <>
-      <Clients />
-      <BrokerDetails />
-      <RecentUserReview />
-      <SimiliarBrokers />
-      <QuestionsAnswer />
-    </>
+<>
+  <Clients />
+
+  <div id="broker-details">
+    <BrokerDetails />
+  </div>
+
+  <div id="recent-user-reviews">
+    <RecentUserReview />
+  </div>
+
+  <div id="frequently-asked-questions">
+    <QuestionsAnswer />
+  </div>
+
+  <div id="similar-brokers">
+    <SimiliarBrokers />
+  </div>
+</>
+
   );
 };
 
