@@ -49,6 +49,13 @@ const RecentUserReview = () => {
   return (
     <section className="py-5" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="container">
+      <div data-aos="zoom-in" className="title-section text-center">
+  <h2 className="display-4 mb-3 fw-semibold">Read What Traders Are Saying</h2>
+  <p className="m-text mb-60">
+    Dive into real reviews from verified users. Discover honest feedback and experiences to help guide your trading journey.
+  </p>
+</div>
+
         <div className="row g-4">
           <div className="col-12">
             {userReviews.map((review, index) => (
