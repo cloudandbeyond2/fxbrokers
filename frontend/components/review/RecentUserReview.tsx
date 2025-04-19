@@ -36,7 +36,7 @@ const userReviews = [
 ];
 
 const RecentUserReview = () => {
-  const [visibleReplies, setVisibleReplies] = useState({});
+  const [visibleReplies, setVisibleReplies] = useState<Record<number, boolean>>({});
 
   const toggleReply = (index) => {
     setVisibleReplies((prev) => ({
