@@ -135,22 +135,7 @@ const Footer = () => {
                   <i className="ph ph-facebook-logo"></i>
                 </a>
               </li>
-              {/* <li>
-                <a href="#">
-                  <i className="ph ph-twitter-logo"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="ph ph-pinterest-logo"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="ph ph-twitch-logo"></i>
-                </a>
-              </li> */}
-              <li>
+                          <li>
                 <a href="#">
                   <i className="ph ph-linkedin-logo"></i>
                 </a>

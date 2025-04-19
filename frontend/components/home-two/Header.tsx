@@ -205,23 +205,12 @@ const Header = () => {
               <li className="dropdown-item">
                 <button>
                   
-                
-                <Link href="/">
+                              <Link href="/">
                   Home 
                   {/* <i className="ph ph-caret-down"></i> */}
                 </Link>
                 </button>
-                {/* <ul className="dropdown-list">
-                  <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/">Home One</Link>
-                  </li>
-                  <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/index-two">Home Two</Link>
-                  </li>
-                  <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/index-three">Home Three</Link>
-                  </li>
-                </ul> */}
+             
               </li>
               <li className="broker-review dropdown-item">
                 <button className="broker-review-dropdown-btn">
@@ -435,12 +424,7 @@ const Header = () => {
                   <li onClick={() => setMobileMenu(false)}>
                     <Link href="/contact-us">Contact Us</Link>
                   </li>
-                  {/* <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/best-brokers-one">Best Brokers 1</Link>
-                  </li>
-                  <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/best-brokers-two">Best Brokers 2</Link>
-                  </li> */}
+                  
                   <li onClick={() => setMobileMenu(false)}>
                     <Link href="/faqs">Faqs</Link>
                   </li>
@@ -450,9 +434,7 @@ const Header = () => {
                   <li onClick={() => setMobileMenu(false)}>
                     <Link href="/sign-up">Sign Up</Link>
                   </li>
-                  {/* <li onClick={() => setMobileMenu(false)}>
-                    <Link href="/404">404 Error</Link>
-                  </li> */}
+                
                 </ul>
               </li>
             </ul>
