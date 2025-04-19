@@ -421,9 +421,14 @@ const CompareBrokerPage = () => {
                         </a>
                       </td>
                       <td className="text-primary">
-                        <a href="#" className="btn btn-secondary d-inline-flex align-items-center gap-2">
-                          Visit Site <i className="ph ph-arrow-right"></i>
-                        </a>
+                      <a
+  href="#"
+  className="btn btn-secondary d-inline-flex align-items-center gap-2"
+  style={{ width: '112px' }}
+>
+  Visit Site <i className="ph ph-arrow-right"></i>
+</a>
+
                       </td>
                       <td className="text-primary">
                         <a href="#" className="btn btn-secondary d-inline-flex align-items-center gap-2">
